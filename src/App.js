@@ -5,7 +5,8 @@ import Answers from "./Answers";
 import { useState } from "react";
 
 function App() {
-  const [sentiments, setSentiments] = useState();
+  const [sentimentResult, setSentimentResult] = useState(null);
+  const [compoundScore, setCompoundScore] = useState(null);
   const [inputText, setInputText] = useState("");
   const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -23,7 +24,7 @@ function App() {
     };
     try {
       const response = await axios.request(options);
-      console.log(response.data);
+      return response.data;
     } catch (error) {
       console.error("Error response:", error.response); // Log detailed error response
       console.error("Error message:", error.message);
@@ -33,7 +34,8 @@ function App() {
   const handleAnalysis = async () => {
     const sentimentResult = await analyzeSentiment(inputText);
     if (sentimentResult) {
-      setSentiments([sentimentResult]);
+      setCompoundScore(sentimentResult.compound);
+      setSentimentResult(sentimentResult.sentiment);
     }
   };
   console.log();
@@ -55,7 +57,7 @@ function App() {
             <Button value="Analyze" onClick={handleAnalysis} />
           </div>
 
-          <Answers type={[sentiments]} score={[sentiments]} />
+          <Answers type={sentimentResult} score={compoundScore} />
         </div>
       </div>
     </div>
