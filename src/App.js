@@ -38,7 +38,7 @@ function App() {
       setSentimentResult(sentimentResult.sentiment);
     }
   };
-  console.log();
+
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Sentiment Analysis API </h1>
