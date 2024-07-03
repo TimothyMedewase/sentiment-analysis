@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Answers = () => {
-  const [type, setType] = useState();
-  const [score, setScore] = useState();
+const Answers = (props) => {
   return (
-    <div>
+    <div className="col-6">
       <h4>Answers:</h4>
       <ul className="list-group">
-        <li className="list-group-item">Type: {type}</li>
-        <li className="list-group-item">Score:{score}</li>
+        <li className="list-group-item">Type: {props.type}</li>
+        <li className="list-group-item">Score:{props.score}</li>
       </ul>
     </div>
   );
