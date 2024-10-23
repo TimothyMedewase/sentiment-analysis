@@ -8,7 +8,7 @@ function App() {
   const [sentimentResult, setSentimentResult] = useState(null);
   const [compoundScore, setCompoundScore] = useState(null);
   const [inputText, setInputText] = useState("");
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = process.env.SENTIMENT_API_KEY;
 
   const analyzeSentiment = async (text) => {
     const options = {
